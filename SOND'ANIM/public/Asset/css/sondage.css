@@ -1,0 +1,72 @@
+[sondage] .menuSondage{
+    margin: 35px 0 50px;
+    display: block;
+}
+
+[sondage] .menuSondage div{
+    margin: 0px;
+    height: 230px;
+    width : 1200px;
+    margin: auto;
+}
+
+[sondage] .menuSondage img{
+    width : 1200px;
+    height: 250px;
+}
+
+[sondage] .menuSondage h2{
+    top: 20px;
+    width: 1200px;
+}
+
+[sond] .conteneur .boxsondage{
+    margin-top: 100px;
+    width: 500px;
+    
+}
+
+[sond] .conteneur .boxsondage img{
+    width: 500px;
+    
+}
+
+
+@media screen and (max-width: 1230px){
+    [sondage] .menuSondage img{
+        width : 800px;
+    }
+    
+    [sondage] .menuSondage h2{
+        width: 800px;
+    }
+
+    [sondage] .menuSondage div{
+        width : 800px;
+    }
+}
+
+@media screen and (max-width: 850px){
+    [sondage] .menuSondage img{
+        width : 350px;
+        height: 200px;
+    }
+    
+    [sondage] .menuSondage h2{
+        width: 350px;
+    }
+
+    [sondage] .menuSondage div{
+        width : 350px;
+        height: 200px;
+    }
+
+    [sond] .conteneur .boxsondage{
+        width: 300px; 
+        margin-bottom: 0px;
+    }
+    
+    [sond] .conteneur .boxsondage img{
+        width: 300px;
+    }
+}

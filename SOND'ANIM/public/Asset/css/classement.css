@@ -1,0 +1,85 @@
+[classement]{
+    padding:0;
+    background-color: black;
+}
+
+[classement] table{
+    margin: 150px auto 0;
+    border-spacing: 0 20px;
+    width: 60%;
+    position: relative;
+    z-index: 5;
+}
+
+[classement] tr:not(.titre){
+    margin: auto;
+    background-color: white;
+    text-align: center;
+}
+
+[classement] td{
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+
+
+[classement] .titre{
+    font-size: 1.6em;
+    text-align: center;
+    font-weight: bold;
+}
+
+[classement] .titre td{
+    background-color: white;
+}
+
+[classement] .or img{
+    width: 130px;
+}
+
+[classement] .or td{
+    font-size: 1.8em;
+    margin: 20px 0;
+    
+}
+
+[classement] .argent img{
+    width: 100px;
+}
+
+[classement]  .argent td{
+    font-size: 1.4em;
+}
+
+
+[classement] .bronze img{
+    width: 80px;
+}
+
+[classement] .bronze td{
+    font-size: 1.2em;
+}
+
+
+@media screen and (max-width: 470px){
+    [classement] table{
+        width: 100%;
+    }
+
+    [classement] .or img{
+        width: 70px;
+    }
+    
+    [classement] .argent img{
+        width: 50px;
+    }
+    
+    [classement] .bronze img{
+        width: 30px;
+    }
+    
+    [classement] td {
+        padding: 15px 0px;
+    }
+}

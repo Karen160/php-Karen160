@@ -1,0 +1,116 @@
+[demonTanjiro], [sondSim]{
+    padding: 0;
+}
+
+[demonTanjiro]{
+    height: 1000px;
+}
+
+[demonTanjiro] h3{
+    background-color:  rgb(20, 182, 223);
+    padding: 20px;
+    text-align: center;
+    border-radius: 40px 40px 0 0;
+    color: black;
+    font-size: 1.5em;
+    vertical-align: baseline;
+
+}
+
+[demonTanjiro] span {
+    font-size: 0.7em;
+    display: flex;
+    float: right;
+    background-color: rgb(125, 209, 125);
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 15px;
+    color: black;
+    vertical-align: baseline;
+}
+
+
+[demonTanjiro] form{
+    margin: 100px auto 0px;
+    display: block;
+    border-radius: 50px;
+    width: 50%;
+    border: rgb(20, 182, 223) 5px solid;
+    background-color: rgba(24, 26, 27, 0.8);
+    position: relative;
+    z-index: 10;
+}
+
+
+
+[demonTanjiro] form p{
+    margin: 20px 20px 50px 15%;
+    font-size: 1.1em;
+}
+
+[demonTanjiro] label{
+    font-size: 1.2em;
+    margin-left: 10%;
+}
+
+[demonTanjiro] p+input{
+    color: white;
+    font-size: 1.2em;;
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(125, 209, 125);
+    border-radius: 0 0 45px 45px;
+    border:  rgb(125, 209, 125) 2px solid;
+    cursor: pointer;
+}
+
+
+[sondSim] h2{
+    padding: 50px 0 0 0;
+    margin: 0px 0px 40px;
+}
+
+[sondSim] .conteneur{
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+[sondSim] .boxsondage{
+    width: 380px; 
+}
+
+[sondSim] .boxsondage img{
+    width: 380px;
+}
+
+@media screen and (max-width : 600px){
+    [demonTanjiro] form{
+        width: 90%;
+        margin: 0 15px;
+    }
+
+    [demonTanjiro] form p{
+        margin-bottom: 70px;
+    }
+}
+
+@media screen and (max-width : 370px){
+    [demonTanjiro] label{
+        margin-left: 10px;
+    }
+    
+    [demonTanjiro] form p{
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width:900px){
+    .conteneur .boxsondage{
+        width: 300px; 
+        margin-bottom: 0px;
+    }
+    
+    [sondSim] .boxsondage img{
+        width: 300px;
+    }
+}

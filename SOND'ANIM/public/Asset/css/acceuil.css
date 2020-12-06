@@ -1,0 +1,94 @@
+[NouvSondage] .menuSondage div{
+    height: 400px;
+}
+
+[NouvSondage] .menuSondage img{
+    width : 400px;
+    height: 400px;
+}
+
+[NouvSondage] .menuSondage h2{
+    top: 150px;
+    width: 400px;
+}
+
+.conteneur p {
+    text-align: center;
+    font-weight: bold;
+    padding: 0px 20px 30px;
+    color: black;
+}
+
+.conteneur p span{
+    background-color: #106B7E;
+    color: white;
+    padding: 5px;
+    font-size: 0.9em;
+    border-radius: 0 0 5px 5px;
+}
+
+.conteneur{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.conteneur .boxsondage{
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.719);
+    background-color: #e8e6e3;
+    box-shadow: 0 3px 6px rgba(255, 255, 255, 0.418);
+    border-radius: 15px;
+    margin: 35px 20px 80px;
+}
+
+.conteneur .boxsondage img{
+    border-radius: 15px 15px 0 0;
+    width: 400px;
+}
+
+.fa-arrow-right{
+    animation: animFleche 3s infinite;
+    display: flex;
+    float: right;
+    color: rgb(173, 57, 57);
+}
+
+@keyframes animFleche{
+    0% {transform : translateX(-20px);}
+    50% {transform : translateX(0px);}
+    100% {transform : translateX(-20px);}
+}
+
+.conteneur .boxsondage:hover{
+    box-shadow: none;
+    transition-duration: 0.2s;
+    transform: translate(0px, -10px);
+    transition-timing-function: linear;
+}
+
+@media screen and (max-width:900px){
+    .conteneur .boxsondage{
+        width: 300px; 
+        margin-bottom: 0px;
+    }
+    
+    .conteneur .boxsondage img{
+        width: 300px;
+    }
+
+    [NouvSondage] .menuSondage div{
+        height: 300px;
+    }
+    
+    [NouvSondage] .menuSondage img{
+        width : 300px;
+        height: 300px;
+    }
+    
+    [NouvSondage] .menuSondage h2{
+        top: 100px;
+        width: 300px;
+    }
+}
