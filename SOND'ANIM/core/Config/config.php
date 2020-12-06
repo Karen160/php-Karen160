@@ -2,7 +2,7 @@
 
 $dbConfig = [
     "host" => "localhost",
-    "dbname" => "projetphp",
+    "dbname" => "sondanim",
     "dbuser" =>"root",
     "dbpass" => ""
 ];
