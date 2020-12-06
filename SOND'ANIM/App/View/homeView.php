@@ -2,40 +2,36 @@
 include('../inc/head.php'); ?>
     <title>Sond'Anim</title>
     <meta name="description" content="Répondez aux différents sondages concernant vos animés préférés et gagnez des points pour devenir premier au classement !">
-<head>
-<body>
-    <header>
-        <h1>Sond'Anim</h1>
-        <?php include('../inc/nav.php'); ?>
-    </header>
+    <?php include('../inc/header.php'); ?>
+
     <main>
         <section nouvSondage>
             <h2>Les animés de nos sondages</h2>
             <div class="menuSondage">
                 <div>
                     <a href="sondageDemonSlayer.php">
-                        <img src="img/MHA/midoryia.gif" alt="Midoryia en mode one for all intégral">
+                        <img src="../public/Asset/img/MHA/midoryia.gif" alt="Midoryia en mode one for all intégral">
                         <h2>Demon Slayer</h2>
                     </a>
                 </div>
 
                 <div>
                     <a href="sondageDemonSlayer.php">
-                        <img src="img/onePiece/onepiece.gif" alt="Luffy en mode gear 5">
+                        <img src="../public/Asset/img/onePiece/onepiece.gif" alt="Luffy en mode gear 5">
                         <h2>One Piece</h2>
                     </a>
                 </div>
 
                 <div>
                     <a href="sondageDemonSlayer.php">
-                        <img src="img/demonSlayer/tanjiro.gif" alt="Tanjiro coupant avec son katana">
+                        <img src="../public/Asset/img/demonSlayer/tanjiro.gif" alt="Tanjiro coupant avec son katana">
                         <h2>Demon Slayer</h2>
                     </a>
                 </div>
 
                 <div>
                     <a href="sondageDemonSlayer.php">
-                        <img src="img/HxH/hxh.gif" alt="Killua avec son yoyo">
+                        <img src="../public/Asset/img/HxH/hxh.gif" alt="Killua avec son yoyo">
                         <h2>Hunter x Hunter</h2>
                     </a>
                 </div>
@@ -43,79 +39,34 @@ include('../inc/head.php'); ?>
 
             <h2>Nouveaux sondages</h2>
             <div class="conteneur">
+                 <!-- Si l'internaute n'est pas connecté, seulement 3 sondages sont montrés, il faut qu'il se connect pour y avoir accès et en voir plus
+                Si l'internaute est connecté, il voit tous les sondages et peut y répondre -->
+                <?php 
+                if($_SESSION['connect']){
+                    $sond =  $requete[0] ;
+                }else{
+                    $sond = $allSondage;
+                }
+                foreach($sond as $sondage) :
+                ?>
+                <!-- Affichage des sondages -->
                 <div class="boxsondage">
-                    <a href="demonTanjiro.php">
-                        <img src="img/demonSlayer/demonTanjiro.png" alt="Demon Tanjiro">
+                    <a href="index.php?page=sondage&sondage=<?=$sondage->question_id?>">
+                        <img src="<?= $sondage->image ?>" alt="Image de la question ' + <?= $sondage->question ?> + '">
                         <p>
-                            <span>10 points</span>
+                            <span>
+                                Point : <?= $sondage->point?>
+                                <br>
+                                Date de fin : <?= $sondage->date_fin ?>
+                            </span>
                             <br><br>
-                            Est ce que Tanjiro Kamado va devenir un démon ?
+                            <?= $sondage->question ?>
                             <br>
                             <i class="fas fa-arrow-right"></i>
                         </p>
                     </a>
                 </div>
-                <div class="boxsondage">
-                    <a href="demonTanjiro.php">
-                        <img src="img/onePiece/equipage.png" alt="Equipage de luffy">
-                        <p>
-                            <span>12 points</span>
-                            <br><br>
-                            Un nouveau membre va-t-il intégrer l'équipage ?
-                            <br>
-                            <i class="fas fa-arrow-right"></i>
-                        </p>
-                    </a>
-                </div>
-                <div class="boxsondage">
-                    <a href="demonTanjiro.php">
-                        <img src="img/MHA/uraraka.png" alt="Uraraka">
-                        <p>
-                            <span>11 points</span>
-                            <br><br>
-                            Ochaco va t'elle avouer ses sentiments à Izuku ?
-                            <br>
-                            <i class="fas fa-arrow-right"></i>
-                        </p>
-                    </a>
-                </div>
-                
-                <div class="boxsondage">
-                    <a href="demonTanjiro.php">
-                        <img src="img/MHA/todomido.png" alt="Combat entre todoroki et midoriya">
-                        <p>
-                            <span>24 points</span>
-                            <br><br>
-                            Quel grand combat est à prévoir avec Izuku ? 
-                            <br>
-                            <i class="fas fa-arrow-right"></i>
-                        </p>
-                    </a>
-                </div>
-                <div class="boxsondage">
-                    <a href="demonTanjiro.php">
-                        <img src="img/HxH/briguad.png" alt="Brigade fantome">
-                        <p>
-                            <span>15 points</span>
-                            <br><br>
-                            Gon et Killua vont-ils se battre contre la brigade fantôme ? 
-                            <br>
-                            <i class="fas fa-arrow-right"></i>
-                        </p>
-                    </a>
-                </div>
-                <div class="boxsondage">
-                    <a href="demonTanjiro.php">
-                        <img src="img/demonSlayer/couple.png" alt="Zenitsu et Nezuko">
-                        <p>
-                            <span>10 points</span>
-                            <br><br>
-                            Est ce que Zenitsu et Nezuko vont sortir ensemble ? 
-                            <br>
-                            <i class="fas fa-arrow-right"></i>
-                        </p>
-                    </a>
-                </div>
+                <?php endforeach; ?>
             </div>
         </section>
     </main>
