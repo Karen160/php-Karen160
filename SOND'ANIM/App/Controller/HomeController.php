@@ -14,14 +14,10 @@ class HomeController{
         if(!isset($_SESSION['connect'])){
             $_SESSION['connect'] = false;
         }
-        //s'il est connecté on lui demande les methodes 
-        if($_SESSION['connect'] == true){
-            $requete = $this->model->homeConnect();
-           $this->model->statut(); 
-        }else{
-            //sinon on lui demande une autre méthode
-            $allSondage = $this->model->home();
-        }     
+        
+        $allNewSondage = $this->model->home();
+        $this->model->statut(); 
+       
         //on require la vue    
         require ROOT."/App/View/homeView.php";
     }

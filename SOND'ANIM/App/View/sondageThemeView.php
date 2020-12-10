@@ -10,7 +10,7 @@
                 <div>
                     <a href="sondageDemonSlayer.php">
                         <img src="../public/Asset/img/MHA/midoryia.gif" alt="Regard de Midoryia">
-                        <h2>Demon Slayer</h2>
+                        <h2>My hero academia</h2>
                     </a>
                 </div>
 

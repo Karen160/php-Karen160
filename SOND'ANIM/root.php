@@ -1,7 +1,7 @@
 <?php
 
 use App\Controller\HomeController;
-use App\Controller\SignController;
+use App\Controller\SondageThemeController;
 use App\Controller\FriendController;
 use App\Controller\ProfilController;
 use App\Controller\ResultController;
@@ -16,14 +16,22 @@ if (array_key_exists("page", $_GET)) {
             $controller = new HomeController();
             $controller->render();
         break;
-        case 'sign':
-            $controller = new SignController();
+        case 'sondageTheme':
+            $controller = new SondageThemeController();
             $controller->render();
         break;
-        case 'profil':
+        case 'classement':
             $controller = new ProfilController();
             $controller->profil();
         break; 
+        case 'resultat':
+            $controller = new ProfilModifController();
+            $controller->modifier();
+        break;
+        case 'profil':
+            $controller = new ProfilModifController();
+            $controller->modifier();
+        break;
         case 'profilModif':
             $controller = new ProfilModifController();
             $controller->modifier();
@@ -44,7 +52,11 @@ if (array_key_exists("page", $_GET)) {
             $controller = new NewFriendController();
             $controller->render();
         break;
-        case 'resultats':
+        case 'connexion':
+            $controller = new ResultController();
+            $controller->render();
+        break;
+        case 'inscription':
             $controller = new ResultController();
             $controller->render();
         break;

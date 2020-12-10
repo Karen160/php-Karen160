@@ -11,7 +11,7 @@ include('../inc/head.php'); ?>
                 <div>
                     <a href="sondageDemonSlayer.php">
                         <img src="../public/Asset/img/MHA/midoryia.gif" alt="Midoryia en mode one for all intégral">
-                        <h2>Demon Slayer</h2>
+                        <h2>My Hero Academia</h2>
                     </a>
                 </div>
 
@@ -39,20 +39,11 @@ include('../inc/head.php'); ?>
 
             <h2>Nouveaux sondages</h2>
             <div class="conteneur">
-                 <!-- Si l'internaute n'est pas connecté, seulement 3 sondages sont montrés, il faut qu'il se connect pour y avoir accès et en voir plus
-                Si l'internaute est connecté, il voit tous les sondages et peut y répondre -->
-                <?php 
-                if($_SESSION['connect']){
-                    $sond =  $requete[0] ;
-                }else{
-                    $sond = $allSondage;
-                }
-                foreach($sond as $sondage) :
-                ?>
+                <?php foreach($allNewSondage as $sondage) :?>
                 <!-- Affichage des sondages -->
                 <div class="boxsondage">
                     <a href="index.php?page=sondage&sondage=<?=$sondage->question_id?>">
-                        <img src="<?= $sondage->image ?>" alt="Image de la question ' + <?= $sondage->question ?> + '">
+                        <img src="<?= $sondage->image_question ?>" alt="Image de la question ' + <?= $sondage->question ?> + '">
                         <p>
                             <span>
                                 Point : <?= $sondage->point?>
