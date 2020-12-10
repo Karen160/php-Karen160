@@ -12,5 +12,6 @@ class SondageThemeController{
 
     public function render()
     {
+        require ROOT."/App/View/sondageThemeView.php";
     }
 }

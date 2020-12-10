@@ -2,6 +2,12 @@
 
 use App\Controller\HomeController;
 use App\Controller\SondageThemeController;
+use App\Controller\SondageMHAController;
+use App\Controller\SondageOPController;
+use App\Controller\SondageDSController;
+use App\Controller\SondageHxHController;
+
+
 use App\Controller\FriendController;
 use App\Controller\ProfilController;
 use App\Controller\ResultController;
@@ -20,6 +26,22 @@ if (array_key_exists("page", $_GET)) {
             $controller = new SondageThemeController();
             $controller->render();
         break;
+        case 'sondageMHA':
+            $controller = new SondageMHAController();
+            $controller->render();
+        break; 
+        case 'sondageOP':
+            $controller = new SondageOPController();
+            $controller->render();
+        break; 
+        case 'sondageDS':
+            $controller = new SondageDSController();
+            $controller->render();
+        break; 
+        case 'sondageHxH':
+            $controller = new SondagHxHController();
+            $controller->render();
+        break; 
         case 'classement':
             $controller = new ProfilController();
             $controller->profil();

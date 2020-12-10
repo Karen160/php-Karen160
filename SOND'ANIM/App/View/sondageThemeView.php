@@ -8,28 +8,28 @@
         <h2>Catégories des sondages</h2>
             <div class="menuSondage">
                 <div>
-                    <a href="sondageDemonSlayer.php">
+                    <a href="../public/index.php?page=sondageMHA">
                         <img src="../public/Asset/img/MHA/midoryia.gif" alt="Regard de Midoryia">
                         <h2>My hero academia</h2>
                     </a>
                 </div>
 
                 <div>
-                    <a href="sondageDemonSlayer.php">
+                    <a href="../public/index.php?page=sondageOP">
                         <img src="../public/Asset/img/onePiece/regard.gif" alt="Regard de Luffy">
                         <h2>One Piece</h2>
                     </a>
                 </div>
 
                 <div>
-                    <a href="sondageDemonSlayer.php">
+                    <a href="../public/index.php?page=sondageDS">
                         <img src="../public/Asset/img/demonSlayer/regard.gif" alt="Regard de Tanjiro">
                         <h2>Demon Slayer</h2>
                     </a>
                 </div>
 
                 <div>
-                    <a href="sondageDemonSlayer.php">
+                    <a href="../public/index.php?page=sondageHxH">
                         <img src="../public/Asset/img/HxH/regard.gif" alt="Regard de Killua">
                         <h2>Hunter x Hunter</h2>
                     </a>
