@@ -1,9 +1,7 @@
-<?php 
-include('../inc/head.php'); ?>
-    <title>Sond'Anim</title>
-    <meta name="description" content="Répondez aux différents sondages concernant vos animés préférés et gagnez des points pour devenir premier au classement !">
-    <?php include('../inc/header.php'); ?>
-
+<?php include('../inc/head.php'); ?>
+<title>Sond'Anim</title>
+<meta name="description" content="Répondez aux différents sondages concernant vos animés préférés et gagnez des points pour devenir premier au classement !">
+<?php include('../inc/header.php'); ?>
     <main>
         <section nouvSondage>
             <h2>Les animés de nos sondages</h2>

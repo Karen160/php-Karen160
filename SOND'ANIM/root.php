@@ -39,7 +39,7 @@ if (array_key_exists("page", $_GET)) {
             $controller->render();
         break; 
         case 'sondageHxH':
-            $controller = new SondagHxHController();
+            $controller = new SondageHxHController();
             $controller->render();
         break; 
         case 'classement':

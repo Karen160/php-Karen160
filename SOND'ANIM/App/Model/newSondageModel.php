@@ -8,19 +8,23 @@ class newSondageModel extends Database {
 
 
     // Enregistrement des éléments du sondages
-    if(isset($_POST['question']) && isset($_POST['image']) && isset($_POST['proposition1']) && isset($_POST['date'])) {
+    if(isset($_POST['question']) && isset($_POST['image']) && isset($_POST['proposition1']) && isset($_POST['date']) && isset($_POST['categorie']) && isset($_POST['point'])) {
       $question=trim($_POST['question']);
       $image=trim($_POST['image']);
       $date=trim($_POST['date']);
+      $categorie=trim($_POST['categorie']);
+      $point=trim($_POST['point']);
 
       // Défini id_membre de l'internaute connecté = membre_id de la table article en bdd
       $membre_id=$_SESSION['user']['id'];
 
       // Enregistrement de la question dans la bdd
-      $enregistrementQuestion=$this->pdo->prepare("INSERT INTO question (user_id_author, question, image, date_fin) VALUES ( $membre_id, :question, :image, :date)");
+      $enregistrementQuestion=$this->pdo->prepare("INSERT INTO sondage_question (auteur_membre_id, type, question, image, date_fin, point) VALUES ( $membre_id, :type, :question, :image, :date, :point)");
       $enregistrementQuestion->bindParam(':question', $question, \PDO::PARAM_STR);
+      $enregistrementQuestion->bindParam(':categorie', $categorie, \PDO::PARAM_STR);
       $enregistrementQuestion->bindParam(':image', $image, \PDO::PARAM_STR);
       $enregistrementQuestion->bindParam(':date', $date, \PDO::PARAM_STR);
+      $enregistrementQuestion->bindParam(':point', $point, \PDO::PARAM_STR);
       $enregistrementQuestion->execute();
 
       // Défini id de la question
@@ -34,7 +38,7 @@ class newSondageModel extends Database {
         for($k=1; $k<=$i; $k++) {
           $proposition=trim($_POST['proposition'.$k]);
           // Enregistrement des proposition de réponse dans la bdd
-          $enregistrementAnswer=$this->pdo->prepare("INSERT INTO answer (id_question_id, choix) VALUES ( '$question_id' , '$proposition')");
+          $enregistrementAnswer=$this->pdo->prepare("INSERT INTO sondage_reponse (id_question_id, choix) VALUES ( '$question_id' , '$proposition')");
           $enregistrementAnswer->execute();
           
         }

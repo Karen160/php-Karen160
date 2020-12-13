@@ -1,17 +1,17 @@
 <?php
 namespace App\Controller;
 
-use App\Model\SondageMHAModel;
+use App\Model\SondageOPModel;
 
 
-class SondageMHAController{
+class SondageOPController{
     public function __construct()
     {
-        $this->model = new SondageMHAModel();
+        $this->model = new SondageOPModel();
     }
     public function render()
     {   
         //on require la vue    
-        require ROOT."/App/View/sondageMHAView.php";
+        require ROOT."/App/View/sondageOPView.php";
     }
 }
