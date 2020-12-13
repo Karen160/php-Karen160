@@ -1,13 +1,8 @@
-<?php include('inc/head.php'); //Nav ?>
-    <title>Sond'Anim</title>
-    <meta name="description" content="Regardez quel place vous occupez dans le classement des sondages d'animés">
-<head>
-<body>
-    <header>
-        <h1>Sond'Anim</h1>
-        <?php include('inc/nav.php'); //Nav ?>
-    </header>
-    
+<?php include('../inc/head.php');; ?>
+<title>Classement</title>
+<meta name="description" content="Regardez quel place vous occupez dans le classement">
+<?php include('../inc/header.php'); ?>
+    <main>
     <main>
         <section classement>
             <img class="fond" src="img/logo/sondanime.png" alt="Midoryia, Luffy, Tanjiro et Killua">
@@ -68,13 +63,4 @@
             </table>
         </section>
     </main>
-    <footer>
-        <p>Site web crée par Karen Azoulay dans le cadre d'un projet scolaire</p>
-        <br>
-        <div>
-            <img src="img/logo/iim.png" alt="Logo IIM">
-            <img src="img/logo/pole.png" alt="Logo Pole léonard de vinci">
-        </div> 
-    </footer>
-</body>
-</html>
+<?php include('../inc/footer.php') ?>

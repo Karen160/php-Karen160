@@ -7,6 +7,8 @@ use App\Controller\SondageOPController;
 use App\Controller\SondageDSController;
 use App\Controller\SondageHxHController;
 
+use App\Controller\ConnexionController;
+use App\Controller\InscriptionController;
 
 use App\Controller\FriendController;
 use App\Controller\ProfilController;
@@ -74,12 +76,16 @@ if (array_key_exists("page", $_GET)) {
             $controller = new NewFriendController();
             $controller->render();
         break;
-        case 'connexion':
+        case 'resultat':
             $controller = new ResultController();
             $controller->render();
         break;
+        case 'connexion':
+            $controller = new ConnexionController();
+            $controller->render();
+        break;
         case 'inscription':
-            $controller = new ResultController();
+            $controller = new InscriptionController();
             $controller->render();
         break;
         default:
