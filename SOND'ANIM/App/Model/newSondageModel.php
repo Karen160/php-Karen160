@@ -5,8 +5,6 @@ class newSondageModel extends Database {
   function newsondage() {
 
     $msg="";
-
-
     // Enregistrement des éléments du sondages
     if(isset($_POST['question']) && isset($_POST['image']) && isset($_POST['proposition1']) && isset($_POST['date']) && isset($_POST['categorie']) && isset($_POST['point'])) {
       $question=trim($_POST['question']);
@@ -15,11 +13,12 @@ class newSondageModel extends Database {
       $categorie=trim($_POST['categorie']);
       $point=trim($_POST['point']);
 
+      var_dump($categorie);
       // Défini id_membre de l'internaute connecté = membre_id de la table article en bdd
-      $membre_id=$_SESSION['user']['id'];
+      $membre_id=$_SESSION['membre']['membre_id'];
 
       // Enregistrement de la question dans la bdd
-      $enregistrementQuestion=$this->pdo->prepare("INSERT INTO sondage_question (auteur_membre_id, type, question, image, date_fin, point) VALUES ( $membre_id, :type, :question, :image, :date, :point)");
+      $enregistrementQuestion=$this->pdo->prepare("INSERT INTO sondage_question (auteur_membre_id, type, question, image_question, date_fin, point) VALUES ( $membre_id, :categorie, :question, :image, :date, :point)");
       $enregistrementQuestion->bindParam(':question', $question, \PDO::PARAM_STR);
       $enregistrementQuestion->bindParam(':categorie', $categorie, \PDO::PARAM_STR);
       $enregistrementQuestion->bindParam(':image', $image, \PDO::PARAM_STR);
@@ -28,7 +27,7 @@ class newSondageModel extends Database {
       $enregistrementQuestion->execute();
 
       // Défini id de la question
-      $recup_question=$this->pdo->query("SELECT max(`question_id`) as question_id FROM question");
+      $recup_question=$this->pdo->query("SELECT max(`question_id`) as question_id FROM sondage_question");
       $recupQ=$recup_question->fetch(\PDO::FETCH_ASSOC);
       $question_id = $recupQ['question_id'];
         $i=0;

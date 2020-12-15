@@ -24,6 +24,11 @@
                                 required="required" data-error="Le pseudo est requis.">
                         </div>
                         <div class="col-sm-12 mt-4 position-static">
+                            <label for="image">Image</label>
+                            <input type="text" name="image" class="form-control" placeholder="Choisissez une image"
+                                required="required" data-error="L'image est requise.">
+                        </div>
+                        <div class="col-sm-12 mt-4 position-static">
                             <label for="email">Email</label>
                             <input type="email" name="email" class="form-control" placeholder="Entrez votre email"
                                 required="required" data-error="Le mail est requis.">

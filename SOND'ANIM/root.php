@@ -44,17 +44,17 @@ if (array_key_exists("page", $_GET)) {
             $controller = new SondageHxHController();
             $controller->render();
         break; 
-        case 'classement':
-            $controller = new ProfilController();
-            $controller->profil();
-        break; 
+        // case 'classement':
+        //     $controller = new ClassementController();
+        //     $controller->render();
+        // break; 
         case 'resultat':
-            $controller = new ProfilModifController();
-            $controller->modifier();
+            $controller = new ResultController();
+            $controller->render();
         break;
         case 'profil':
-            $controller = new ProfilModifController();
-            $controller->modifier();
+            $controller = new ProfilController();
+            $controller->profil();
         break;
         case 'profilModif':
             $controller = new ProfilModifController();
