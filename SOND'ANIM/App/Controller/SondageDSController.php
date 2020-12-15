@@ -11,7 +11,8 @@ class SondageDSController{
     }
     public function render()
     {   
+        $allSondageDS =  $this->model->sondDS();
         //on require la vue    
-        require ROOT."/App/View/homeView.php";
+        require ROOT."/App/View/sondageDSView.php";
     }
 }

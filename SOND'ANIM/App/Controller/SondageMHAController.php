@@ -11,6 +11,7 @@ class SondageMHAController{
     }
     public function render()
     {   
+        $allSondageMHA =  $this->model->sondMHA();
         //on require la vue    
         require ROOT."/App/View/sondageMHAView.php";
     }

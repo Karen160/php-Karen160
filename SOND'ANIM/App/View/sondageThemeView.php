@@ -4,7 +4,7 @@
     <?php include('../inc/header.php'); ?>
 
     <main>
-        <section sondage>
+        <section sondageTheme>
         <h2>Catégories des sondages</h2>
             <div class="menuSondage">
                 <div>

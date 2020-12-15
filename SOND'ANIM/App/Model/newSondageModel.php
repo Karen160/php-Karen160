@@ -39,7 +39,6 @@ class newSondageModel extends Database {
           // Enregistrement des proposition de réponse dans la bdd
           $enregistrementAnswer=$this->pdo->prepare("INSERT INTO sondage_reponse (id_question_id, choix) VALUES ( '$question_id' , '$proposition')");
           $enregistrementAnswer->execute();
-          
         }
         return $msg="<div style='margin: 10px auto; padding:10px 0; width: 90%; background-color: green; text-transform: uppercase; color: white; text-align: center;'>Merci ! Votre sondage a bien été enregistré !</div>";
       }

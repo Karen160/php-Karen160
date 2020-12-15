@@ -12,10 +12,12 @@
                     <a href="index.php?page=sondage&sondage=<?=$sondage->question_id?>">
                         <img src="<?= $sondage->image_question ?>" alt="Image de la question ' + <?= $sondage->question ?> + '">
                         <p>
-                            <span>
-                                Point : <?= $sondage->point?>
-                                <br>
+                        <span>
                                 Date de fin : <?= $sondage->date_fin ?>
+                            </span>
+                            <br>
+                            <span>
+                                Points : <?= $sondage->point?> pts
                             </span>
                             <br><br>
                             <?= $sondage->question ?>

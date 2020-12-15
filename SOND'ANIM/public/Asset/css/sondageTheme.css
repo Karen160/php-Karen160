@@ -1,0 +1,72 @@
+[sondageTheme] .menuSondage{
+    margin: 35px 0 50px;
+    display: block;
+}
+
+[sondageTheme] .menuSondage div{
+    margin: 0px;
+    height: 230px;
+    width : 1200px;
+    margin: auto;
+}
+
+[sondageTheme] .menuSondage img{
+    width : 1200px;
+    height: 250px;
+}
+
+[sondageTheme] .menuSondage h2{
+    top: 20px;
+    width: 1200px;
+}
+
+[sond] .conteneur .boxsondage{
+    margin-top: 100px;
+    width: 500px;
+    
+}
+
+[sond] .conteneur .boxsondage img{
+    width: 500px;
+    
+}
+
+
+@media screen and (max-width: 1230px){
+    [sondageTheme] .menuSondage img{
+        width : 800px;
+    }
+    
+    [sondageTheme] .menuSondage h2{
+        width: 800px;
+    }
+
+    [sondageTheme] .menuSondage div{
+        width : 800px;
+    }
+}
+
+@media screen and (max-width: 850px){
+    [sondageTheme] .menuSondage img{
+        width : 350px;
+        height: 200px;
+    }
+    
+    [sondageTheme] .menuSondage h2{
+        width: 350px;
+    }
+
+    [sondageTheme] .menuSondage div{
+        width : 350px;
+        height: 200px;
+    }
+
+    [sond] .conteneur .boxsondage{
+        width: 300px; 
+        margin-bottom: 0px;
+    }
+    
+    [sond] .conteneur .boxsondage img{
+        width: 300px;
+    }
+}

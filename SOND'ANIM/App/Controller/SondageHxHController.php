@@ -11,6 +11,7 @@ class SondageHxHController{
     }
     public function render()
     {   
+        $allSondageHxH =  $this->model->sondHxH();
         //on require la vue    
         require ROOT."/App/View/sondageHxHView.php";
     }

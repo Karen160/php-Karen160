@@ -11,6 +11,7 @@ class SondageOPController{
     }
     public function render()
     {   
+        $allSondageOP =  $this->model->sondOP();
         //on require la vue    
         require ROOT."/App/View/sondageOPView.php";
     }

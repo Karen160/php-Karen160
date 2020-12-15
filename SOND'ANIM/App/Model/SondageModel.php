@@ -5,7 +5,7 @@ class SondageModel extends Database {
   function verif() {
     //recup info a return dans le controller pour une verification
     $sondage_id=$_GET['sondage'];
-    return $id=$this->query("SELECT `question_id` FROM `question` where  `question_id` =  '$sondage_id'  ");
+    return $id=$this->query("SELECT `question_id` FROM `sondage_question` where  `question_id` =  '$sondage_id'  ");
   }
 
   function sondage() {
@@ -13,34 +13,35 @@ class SondageModel extends Database {
 
     //select tout les ids de sondage exitants
     //select info d'un sondage
-    $sondage=$this->query("SELECT q.`question`, q.`question_id`,q.`user_id_author`, a.`choix`, a.`answer_id` FROM `question` as q INNER JOIN answer as a where `question_id` = `id_question_id` AND `question_id` = ' $sondage_id' ");
+    $sondage=$this->query("SELECT q.`question`, q.`question_id`,q.`auteur_membre_id`, a.`choix`, a.`reponse_id` FROM `sondage_question` as q INNER JOIN sondage_reponse as a WHERE `question_id` = `id_question_id` AND `question_id` = ' $sondage_id' ");
 
     //select tout les ids de sondage exitants
     //select info d'un sondage
     date_default_timezone_set("Europe/Paris");
-    $dtfin = $this->pdo->query("SELECT date_fin FROM question WHERE question_id = '$sondage_id'");
+    $dtfin = $this->pdo->query("SELECT date_fin FROM sondage_question WHERE question_id = '$sondage_id'");
     $dtnow = date("Y-m-d H:i:s");
     $dtfin = $dtfin->fetchAll(\PDO::FETCH_ASSOC);
 
     //si l'heure actuelle est supérieur a celle de la fin du sondage
     if(strtotime($dtnow) > strtotime($dtfin[0]['date_fin'])){
       //on trouve la réponse qui a eu le plus de vote
-     $max = $this->pdo->query("SELECT MAX(nombre) AS nombre FROM answer WHERE id_question_id = '$sondage_id'");
+     $max = $this->pdo->query("SELECT MAX(nombre) AS nombre FROM sondage_reponse WHERE id_question_id = '$sondage_id'");
      $max = $max->fetchAll(\PDO::FETCH_ASSOC);
      $max = $max[0]['nombre'];
      // la valeur 1 dans la BDD est la réponse la plus votée, 0 sont les questions les moins votées
-     $pushresultT = $this->pdo->prepare("UPDATE answer SET resultat = 1 WHERE id_question_id = '$sondage_id' AND nombre = '$max'");
+     $pushresultT = $this->pdo->prepare("UPDATE sondage_reponse SET resultat = 1 WHERE id_question_id = '$sondage_id' AND nombre = '$max'");
      $pushresultT->execute();
-     $pushresultF = $this->pdo->prepare("UPDATE answer SET resultat = 0 WHERE id_question_id = '$sondage_id' AND nombre <> '$max'");
+     $pushresultF = $this->pdo->prepare("UPDATE sondage_reponse SET resultat = 0 WHERE id_question_id = '$sondage_id' AND nombre <> '$max'");
      $pushresultF->execute();
     }
     return $sondage; 
   }
+
   function addAnswer(){
     //permet de Hash les réponses dans l'url pour ainsi pallier les requetes de l'utilisateur via l'url
     $sondage_id=$_GET['sondage'];
-    $idUser=$_SESSION['user']['id'];
-    $verif=$this->pdo->query("SELECT * FROM user_answer where `user_id` = '$idUser' AND id_question = '$sondage_id' ");
+    $idUser=$_SESSION['membre']['membre_id'];
+    $verif=$this->pdo->query("SELECT * FROM membre_reponse WHERE `id_membre` = '$idUser' AND id_question = '$sondage_id' ");
       if(isset($_GET['answer'])){
         //hash des valeurs des réponses
         $idAnswerHash = $_GET['answer'];
@@ -50,9 +51,9 @@ class SondageModel extends Database {
           $idAnswer++;  
         }
         if($verif->rowCount() == 0){
-          $addAnswer = $this->pdo->prepare("INSERT INTO user_answer (`user_id`,answer_id,id_question) VALUES ('$idUser','$idAnswer',' $sondage_id')");
+          $addAnswer = $this->pdo->prepare("INSERT INTO membre_reponse (`id_membre`, id_reponse, id_question) VALUES ('$idUser','$idAnswer',' $sondage_id')");
           $addAnswer->execute();  
-          $countAnswer= $this->pdo->prepare("UPDATE ANSWER SET nombre = nombre+1 WHERE answer_id = '$idAnswer' ");
+          $countAnswer= $this->pdo->prepare("UPDATE membre_reponse SET nombre = nombre+1 WHERE membre_reponse = '$idAnswer'");
           $countAnswer->execute();
           header('location:index.php?page=sondage&sondage='.$sondage_id); 
         }else{
@@ -72,10 +73,10 @@ class SondageModel extends Database {
   function result(){
     //function permettant de récupérer les informations des résultats d'un sondage
     $sondage_id=$_GET['sondage'];
-    $total = $this->pdo->query("SELECT SUM(nombre) as total from answer WHERE id_question_id = '$sondage_id'"); //le total est le nombre total pour les %
+    $total = $this->pdo->query("SELECT SUM(nombre) as total from membre_reponse WHERE id_question_id = '$sondage_id'"); //le total est le nombre total pour les %
     $total = $total->fetchAll(\PDO::FETCH_ASSOC);
     //requete permettant de récupéré les info d'une réponse
-    $resultat = $this->pdo->query("SELECT q.`date_fin` as date_fin,q.`question` as question, a.`choix` as choix ,a.`nombre` as nombre, SUM(a.`nombre`) as total from question as q INNER JOIN answer as a on q.`question_id` = a.`id_question_id` WHERE q.`question_id` = '$sondage_id' GROUP BY answer_id ");
+    $resultat = $this->pdo->query("SELECT q.`date_fin` as date_fin, q.`question` as question, a.`choix` as choix, a.`nombre` as nombre, SUM(a.`nombre`) as total FROM sondage_question as q INNER JOIN sondage_reponse as a on q.`question_id` = a.`id_question_id` WHERE q.`question_id` = '$sondage_id' GROUP BY reponse_id ");
     $resultat = $resultat->fetchAll(\PDO::FETCH_ASSOC);
     return array($resultat, $total) ; //return un tableau de var a la vue
   }
