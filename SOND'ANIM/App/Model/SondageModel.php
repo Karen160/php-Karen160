@@ -83,13 +83,13 @@ class SondageModel extends Database {
 
   function comment() {
     $sondage_id=$_GET['sondage'];
-//function permettant de recup et afficher les commentaire et les info lié
-    $commentaire =$this->query("SELECT u.`pseudo`, uc.`comment`, uc.`date` FROM user_comment as uc INNER JOIN user as u on uc.`user_id` = u.`id` WHERE id_question_id = '$sondage_id'");
+    //function permettant de recup et afficher les commentaire et les info lié
+    $commentaire =$this->query("SELECT m.`pseudo`, c.`msg`, c.`date` FROM commentaire as c INNER JOIN membre as m on c.`id_membre` = m.`membre_id` WHERE id_question_id = '$sondage_id'");
     if(isset($_POST['sendcom'])) {
       if(!empty($_POST['commentaire'])) {
-        $iduser=$_SESSION['user']['id'];
+        $iduser=$_SESSION['membre']['membre_id'];
         $mess=$_POST['commentaire'];
-        $enregistrementCom=$this->pdo->prepare("INSERT INTO user_comment (`user_id`, id_question_id, comment) VALUES ('$iduser', '$sondage_id', '$mess')");
+        $enregistrementCom=$this->pdo->prepare("INSERT INTO commentaire (`id_membre`, id_question_id, msg) VALUES ('$iduser', '$sondage_id', '$mess')");
         $enregistrementCom->execute();
       }else {
   
@@ -99,7 +99,7 @@ class SondageModel extends Database {
   }
 
   function share() {
-    $membre_email=$_SESSION['user']['email'];
+    $membre_email=$_SESSION['membre']['email'];
     $msg="";
 //fucntion de partage de sondage
     if(isset($_POST['send'])) { //si le bouton send est cliqué
@@ -121,7 +121,7 @@ class SondageModel extends Database {
           if(filter_var($_POST['email'. $k], FILTER_VALIDATE_EMAIL)) {
             //envoi de l'email
             $to=$_POST['email'.$k]; //le destinataire c'est a dire le contenu de l'élément au name email$K
-            $subject='Le sondage 2Choose';
+            $subject='Le sondage de SONDANIM';
             $mail=$_POST['textarea'];
             $link=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
             $content="Tu as recu une invitation à un sondage, clique sur le message pour y accéder: <br> <br><a href='".$link."'>".$mail." </a>";
