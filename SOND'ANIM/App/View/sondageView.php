@@ -1,4 +1,4 @@
-<?php include('../inc/head.php');; ?>
+<?php include('../inc/head.php'); ?>
 <title>Sondage</title>
 <meta name="description" content="Le sondage">
 <?php include('../inc/header.php');
@@ -94,7 +94,7 @@ list ($temps, $past) = TimeToFin($dateFin);
         <div class="sond">
             <?php foreach($sondage as $choix): ?>
             <button name="addAnswer">
-                <?php $idHash = password_hash($choix->answer_id, PASSWORD_DEFAULT); ?>
+                <?php $idHash = password_hash($choix->reponse_id, PASSWORD_DEFAULT); ?>
                 <a href="index.php?page=sondage&sondage=<?= $choix->question_id?>&answer=<?=$idHash?>">
                     <h4><?=$choix->choix?></h4>
                 </a>
@@ -151,10 +151,10 @@ list ($temps, $past) = TimeToFin($dateFin);
                 <div>
                     <img src="https://www.tbstat.com/wp/uploads/2019/07/20190724_Blockchain-Gaming.jpg">
                     <p><?= $com->pseudo ?></p>
-                    <p><?= $com->date ?></p>
+                    <p><?= $com->date_msg ?></p>
                 </div>
                 <div>
-                    <p><?= $com->comment ?></p>
+                    <p><?= $com->msg ?></p>
                 </div>
                 <br>
             </div>
@@ -206,7 +206,7 @@ list ($temps, $past) = TimeToFin($dateFin);
                         <div class="col-sm-12 mt-4">
                             <label for="message">Message</label>
                             <textarea form="partage" for="textarea" name="textarea"
-                                class="form-control">Salut c'est <?= $_SESSION['user']['pseudo']?>,<?="\n"?>Je te recommande ce sondage de 2Choose dont la question est : <?=$sondage[0]->question?><?="\n"?>Répond y vite et donne moi ton avis ! <?="\n"?>Ton ami(e) <?= $_SESSION['user']['pseudo']?></textarea>
+                                class="form-control">Salut c'est <?= $_SESSION['membre']['pseudo']?>,<?="\n"?>Je te recommande ce sondage de 2Choose dont la question est : <?=$sondage[0]->question?><?="\n"?>Répond y vite et donne moi ton avis ! <?="\n"?>Ton ami(e) <?= $_SESSION['membre']['pseudo']?></textarea>
                         </div>
                         <div class="col-sm-12 mt-4 offset-ms-4">
                             <button type="submit" name="send" class="btn btn-info btn-block active">Envoyez</button>
@@ -217,4 +217,4 @@ list ($temps, $past) = TimeToFin($dateFin);
         </div>
     </section>
 </main>
-<?php include '../inc/footer.inc.php'?>
+<?php include('../inc/footer.php'); ?>

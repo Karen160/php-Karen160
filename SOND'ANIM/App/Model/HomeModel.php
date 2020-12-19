@@ -5,7 +5,7 @@ use Core\Database;
 class HomeModel extends Database{
     function home(){
         $_SESSION['connect'] == true;
-      return $allNewSondage = $this->query(" SELECT `question`, `image_question`, `point`, `date_fin` FROM `sondage_question` WHERE date_fin >= NOW() ORDER BY date_fin ASC limit 6");
+      return $allNewSondage = $this->query(" SELECT question_id, `question`, `image_question`, `point`, `date_fin` FROM `sondage_question` WHERE date_fin >= NOW() ORDER BY date_fin ASC limit 6");
     }
 
     function statut(){

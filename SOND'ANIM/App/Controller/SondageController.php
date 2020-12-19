@@ -20,9 +20,7 @@ class SondageController {
                 $sondage=$this->model->sondage();
                 $resultat = $this->model->result();
                 $commentaire = $this->model->comment();
-                // $com = $this->model->saveCom();
-                // $data = $this->model->getCom();
-               $vote = $this->model->addAnswer();
+                $vote = $this->model->addAnswer();
                 require ROOT."/App/View/sondageView.php";
             }else { //sinon id est vide ou le $_get sondage est vide alors on redirige vers l'acceuil
                 header('location:index.php?page=home');

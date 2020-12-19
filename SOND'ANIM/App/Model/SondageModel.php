@@ -13,7 +13,7 @@ class SondageModel extends Database {
 
     //select tout les ids de sondage exitants
     //select info d'un sondage
-    $sondage=$this->query("SELECT q.`question`, q.`question_id`,q.`auteur_membre_id`, a.`choix`, a.`reponse_id` FROM `sondage_question` as q INNER JOIN sondage_reponse as a WHERE `question_id` = `id_question_id` AND `question_id` = ' $sondage_id' ");
+    $sondage=$this->query("SELECT q.`question`, q.`question_id`, q.`auteur_membre_id`, a.`choix`, a.`reponse_id` FROM `sondage_question` as q INNER JOIN sondage_reponse as a WHERE `question_id` = `id_question_id` AND `question_id` = ' $sondage_id' ");
 
     //select tout les ids de sondage exitants
     //select info d'un sondage
@@ -37,11 +37,11 @@ class SondageModel extends Database {
     return $sondage; 
   }
 
-  function addAnswer(){
+  function addAnswer() {
     //permet de Hash les réponses dans l'url pour ainsi pallier les requetes de l'utilisateur via l'url
     $sondage_id=$_GET['sondage'];
     $idUser=$_SESSION['membre']['membre_id'];
-    $verif=$this->pdo->query("SELECT * FROM membre_reponse WHERE `id_membre` = '$idUser' AND id_question = '$sondage_id' ");
+    $verif=$this->pdo->query("SELECT * FROM membre_reponse WHERE `id_membre` = '$idUser' AND id_question = '$sondage_id'");
       if(isset($_GET['answer'])){
         //hash des valeurs des réponses
         $idAnswerHash = $_GET['answer'];
@@ -73,7 +73,7 @@ class SondageModel extends Database {
   function result(){
     //function permettant de récupérer les informations des résultats d'un sondage
     $sondage_id=$_GET['sondage'];
-    $total = $this->pdo->query("SELECT SUM(nombre) as total from membre_reponse WHERE id_question_id = '$sondage_id'"); //le total est le nombre total pour les %
+    $total = $this->pdo->query("SELECT SUM(nombre) as total from sondage_reponse WHERE id_question_id = '$sondage_id'"); //le total est le nombre total pour les %
     $total = $total->fetchAll(\PDO::FETCH_ASSOC);
     //requete permettant de récupéré les info d'une réponse
     $resultat = $this->pdo->query("SELECT q.`date_fin` as date_fin, q.`question` as question, a.`choix` as choix, a.`nombre` as nombre, SUM(a.`nombre`) as total FROM sondage_question as q INNER JOIN sondage_reponse as a on q.`question_id` = a.`id_question_id` WHERE q.`question_id` = '$sondage_id' GROUP BY reponse_id ");
@@ -84,7 +84,7 @@ class SondageModel extends Database {
   function comment() {
     $sondage_id=$_GET['sondage'];
     //function permettant de recup et afficher les commentaire et les info lié
-    $commentaire =$this->query("SELECT m.`pseudo`, c.`msg`, c.`date` FROM commentaire as c INNER JOIN membre as m on c.`id_membre` = m.`membre_id` WHERE id_question_id = '$sondage_id'");
+    $commentaire =$this->query("SELECT m.`pseudo`, c.`msg`, c.`date_msg` FROM commentaire as c INNER JOIN membre as m on c.`id_membre` = m.`membre_id` WHERE id_question_id = '$sondage_id'");
     if(isset($_POST['sendcom'])) {
       if(!empty($_POST['commentaire'])) {
         $iduser=$_SESSION['membre']['membre_id'];
@@ -101,7 +101,7 @@ class SondageModel extends Database {
   function share() {
     $membre_email=$_SESSION['membre']['email'];
     $msg="";
-//fucntion de partage de sondage
+    //function de partage de sondage
     if(isset($_POST['send'])) { //si le bouton send est cliqué
 
       //Vérifier si le message fait plus de 20 caractères
@@ -157,7 +157,7 @@ class SondageModel extends Database {
 
       return $msg;
     }
-  }
+ }
 }
 
 ?>
