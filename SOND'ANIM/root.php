@@ -9,7 +9,7 @@ use App\Controller\SondageHxHController;
 
 use App\Controller\ConnexionController;
 use App\Controller\InscriptionController;
-
+use App\Controller\ClassementController;
 use App\Controller\FriendController;
 use App\Controller\ProfilController;
 use App\Controller\ResultController;
@@ -44,10 +44,10 @@ if (array_key_exists("page", $_GET)) {
             $controller = new SondageHxHController();
             $controller->render();
         break; 
-        // case 'classement':
-        //     $controller = new ClassementController();
-        //     $controller->render();
-        // break; 
+        case 'classement':
+            $controller = new ClassementController();
+            $controller->render();
+        break; 
         case 'resultat':
             $controller = new ResultController();
             $controller->render();

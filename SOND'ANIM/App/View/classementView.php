@@ -5,7 +5,7 @@
     <main>
     <main>
         <section classement>
-            <img class="fond" src="img/logo/sondanime.png" alt="Midoryia, Luffy, Tanjiro et Killua">
+            <img class="fond" src="Asset/img/logo/sondanime.png" alt="Midoryia, Luffy, Tanjiro et Killua">
             <h2 class="fondDev" >Le classement</h2>
             <h4 class="fondDev">Regardez votre place dans le classement grâce à vos points gagnés ! <br> Qui sera le meilleur parieur d'animé ?</h4>
 
@@ -16,17 +16,17 @@
                     <td>Points</td>
                 </tr>
                 <tr class="or">
-                    <td><img src="img/logo/or.png"></td>
+                    <td><img src="Asset/img/logo/or.png"></td>
                     <td>Jonathan</td>
                     <td>180</td>
                 </tr>
                 <tr  class="argent">
-                    <td><img src="img/logo/argent.png"></td>
+                    <td><img src="Asset/img/logo/argent.png"></td>
                     <td>Bastien</td>
                     <td>120</td>
                 </tr>
                 <tr  class="bronze">
-                    <td><img src="img/logo/bronze.png"></td>
+                    <td><img src="Asset/img/logo/bronze.png"></td>
                     <td>Ron</td>
                     <td>100</td>
                 </tr>
