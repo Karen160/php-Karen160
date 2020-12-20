@@ -3,23 +3,23 @@ use Core\Database;
 
 class ProfilModifModel extends Database {
     function recup() {
-        $id = $_SESSION['user']['id'];
-        $user =  $this->query("SELECT * FROM `user` WHERE id = '$id'");
-        $friend =  $this->query("SELECT count(friend_id) as nb_ami from friend where user_id_A ='$id' OR user_id_B = '$id'");
-        $sondage = $this->query("SELECT count(question_id) as nb_sond from question where user_id_author = '$id'");
+        $id = $_SESSION['membre']['membre_id'];
+        $user =  $this->query("SELECT * FROM `membre` WHERE membre_id = '$id'");
+        $friend =  $this->query("SELECT count(ami_id) as nb_ami from ami where membre1_id ='$id' OR membre2_id = '$id'");
+        $sondage = $this->query("SELECT count(question_id) as nb_sond from sondage_question where auteur_membre_id = '$id'");
         return array($user,$friend,$sondage);
     }
 
     function modifier() {
         $error=false;
         $msg="modification faites";
-        $id=$_SESSION['user']['id']; //récup id 
+        $id=$_SESSION['membre']['membre_id']; //récup id 
 
         if(isset($_POST['bouton'])) {
             //on vérifie si les champs ne sont pas vides.
             if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['mdp'])) {
                 $mdp=trim($_POST['mdp']);
-                $recup_infos=$this->pdo->query("SELECT * FROM user WHERE id = '$id' ");
+                $recup_infos=$this->pdo->query("SELECT * FROM membre WHERE membre_id = '$id' ");
                 $infos_membre=$recup_infos->fetch(\PDO::FETCH_ASSOC);
                 //verification du mots de passe
                 if(password_verify($mdp, $infos_membre['mdp'])==true) {
@@ -41,15 +41,17 @@ class ProfilModifModel extends Database {
                     $nom=htmlspecialchars(trim($_POST['nom']));
                     $pseudo=htmlspecialchars(trim($_POST['pseudo']));
                     $email=htmlspecialchars(trim($_POST['email']));
+                    $image=trim($_POST['image']);
 
                     //update de la BDD
-                    $enregistrement=$this->pdo->prepare("UPDATE user SET nom = :nom , prenom = :prenom, pseudo = :pseudo, email = :email, mdp = :Nmdp WHERE id = '$id' ");
+                    $enregistrement=$this->pdo->prepare("UPDATE membre SET nom = :nom , prenom = :prenom, pseudo = :pseudo, email = :email, mdp = :Nmdp, image = :image WHERE membre_id = '$id' ");
 
                     $enregistrement->bindParam(':nom', $nom, \PDO::PARAM_STR);
                     $enregistrement->bindParam(':prenom', $prenom, \PDO::PARAM_STR);
                     $enregistrement->bindParam(':pseudo', $pseudo, \PDO::PARAM_STR);
                     $enregistrement->bindParam(':email', $email, \PDO::PARAM_STR);
                     $enregistrement->bindParam(':Nmdp', $Nmdp, \PDO::PARAM_STR);
+                    $enregistrement->bindParam(':image', $image, \PDO::PARAM_STR);
                     $enregistrement->execute();
 
                     //rediriger

@@ -12,12 +12,12 @@ class HomeModel extends Database{
         //Permets d'attribuer une valeur au statut pour savoir quand l'utilisateur est connecté ou non
         if($_SESSION['connect'])
         {
-            $co =$this->pdo->prepare("UPDATE membre SET statut= 1 WHERE id =" . $_SESSION['membre']['membre_id']);
+            $co =$this->pdo->prepare("UPDATE membre SET statut= 1 WHERE membre_id =" . $_SESSION['membre']['membre_id']);
             $co->execute();
         } 
         //si l'utilisateur appuie sur le bouton déconnexion alors on push un 0 dans la table membre statut
         if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
-            $co =$this->pdo->prepare("UPDATE membre SET statut= 0 WHERE id =" . $_SESSION['membre']['membre_id']);
+            $co =$this->pdo->prepare("UPDATE membre SET statut= 0 WHERE membre_id =" . $_SESSION['membre']['membre_id']);
             $co->execute();
         }
     }

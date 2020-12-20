@@ -15,6 +15,7 @@ class ProfilController{
         // si connecté on demande la méthode et on passe une variable plus require la vue
         if($_SESSION['connect'] == true){
             $user_infos = $this->model->recup();
+            $allSondage = $this->model->mesSondage();
             $this->model->profil();
             require ROOT."/App/View/profilView.php";
         }else{//si pas connecté on redirige

@@ -4,17 +4,17 @@ use Core\Database;
 class FriendModel extends Database {
     function friend() {
         $msg="";//création du var message
-        $idUser=$_SESSION['user']['id']; //stcokage de l'id de l'utilisateur en le récupérant de la session
+        $idUser=$_SESSION['membre']['membre_id']; //stcokage de l'id de l'utilisateur en le récupérant de la session
 
         //On récupère dans la bdd les informations des amis A et B
-        $colA=$this->pdo->query("SELECT u.`pseudo` as pseudo,u.`statut` as statut, f.`user_id_A` as id FROM friend as f INNER JOIN user as u  on f.`user_id_A` = u.`id` WHERE f.`user_id_B` = '$idUser'");
-        $colB=$this->pdo->query("SELECT u.`pseudo` as pseudo,u.`statut` as statut, f.`user_id_B` as id FROM friend as f INNER JOIN user as u  on f.`user_id_B` = u.`id` WHERE f.`user_id_A` = '$idUser'");
+        $colA=$this->pdo->query("SELECT m.`pseudo` as pseudo, m.`statut` as statut, a.`membre1_id` as id FROM ami as a INNER JOIN membre as m  on a.`membre1_id` = m.`membre_id` WHERE a.`membre2_id` = '$idUser'");
+        $colB=$this->pdo->query("SELECT m.`pseudo` as pseudo, m.`statut` as statut, a.`membre2_id` as id FROM ami as a INNER JOIN membre as m  on a.`membre2_id` = m.`membre_id` WHERE a.`membre1_id` = '$idUser'");
 
         if(isset($_POST['button'])) {
             if( !empty($_POST['recherche'])) {
                 $recherche=htmlspecialchars(trim($_POST['recherche']));
-                $colA=$this->pdo->query("SELECT u.`pseudo` as pseudo, f.`user_id_A` as id FROM friend as f INNER JOIN user as u  on f.`user_id_A` = u.`id` WHERE f.`user_id_B` = '$idUser' AND u.`pseudo` LIKE '$recherche%' ORDER BY id DESC ");
-                $colB=$this->pdo->query("SELECT u.`pseudo` as pseudo, f.`user_id_B` as id FROM friend as f INNER JOIN user as u  on f.`user_id_B` = u.`id` WHERE f.`user_id_A` = '$idUser' AND u.`pseudo` LIKE '$recherche%' ORDER BY id DESC ");
+                $colA=$this->pdo->query("SELECT m.`pseudo` as pseudo, a.`membre1_id` as id FROM ami as a INNER JOIN membre as m  on a.`membre1_id` = m.`membre_id` WHERE a.`membre2_id` = '$idUser' AND m.`pseudo` LIKE '$recherche%' ORDER BY membre_id DESC ");
+                $colB=$this->pdo->query("SELECT m.`pseudo` as pseudo, a.`membre2_id` as id FROM ami as a INNER JOIN membre as m  on a.`membre2_id` = m.`membre_id` WHERE a.`membre1_id` = '$idUser' AND m.`pseudo` LIKE '$recherche%' ORDER BY membre_id DESC ");
             }
         }
 
@@ -31,15 +31,15 @@ class FriendModel extends Database {
 
         if(isset($_GET['id'])) {
             $idFriend=$_GET['id'];
-            $idUser=$_SESSION['user']['id'];
+            $idUser=$_SESSION['membre']['membre_id'];
             //verif présence amis dans col A 
-            $colA=$this->pdo->query("SELECT user_id_A FROM friend where user_id_A = '$idFriend'  AND user_id_B = '$idUser' ");
+            $colA=$this->pdo->query("SELECT membre1_id FROM ami where membre1_id = '$idFriend'  AND membre2_id = '$idUser' ");
             //verif présence amis dans col B 
-            $colB=$this->pdo->query("SELECT user_id_B FROM friend where user_id_A = '$idUser'  AND user_id_B = '$idFriend' ");
+            $colB=$this->pdo->query("SELECT membre2_id FROM ami where membre1_id = '$idUser'  AND membre2_id = '$idFriend' ");
             //Vérifier si l'amis n'est pas déjà présent dans les amis
             if($colA->rowCount()==1 || $colB->rowCount()==1) {
-                $colA=$this->pdo->prepare("DELETE FROM friend where user_id_A = '$idFriend'  AND user_id_B = '$idUser' ");
-                $colB=$this->pdo->prepare("DELETE FROM friend where user_id_A = '$idUser'  AND user_id_B = '$idFriend' ");
+                $colA=$this->pdo->prepare("DELETE FROM ami where membre1_id = '$idFriend'  AND membre2_id = '$idUser' ");
+                $colB=$this->pdo->prepare("DELETE FROM ami where membre1_id = '$idUser'  AND membre2_id = '$idFriend' ");
                 $colA->execute();
                 $colB->execute();
                 header("location:index.php?page=friend");

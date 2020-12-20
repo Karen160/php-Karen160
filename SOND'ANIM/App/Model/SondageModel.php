@@ -53,7 +53,7 @@ class SondageModel extends Database {
         if($verif->rowCount() == 0){
           $addAnswer = $this->pdo->prepare("INSERT INTO membre_reponse (`id_membre`, id_reponse, id_question) VALUES ('$idUser','$idAnswer',' $sondage_id')");
           $addAnswer->execute();  
-          $countAnswer= $this->pdo->prepare("UPDATE membre_reponse SET nombre = nombre+1 WHERE membre_reponse = '$idAnswer'");
+          $countAnswer= $this->pdo->prepare("UPDATE sondage_reponse SET nombre = nombre+1 WHERE reponse_id = '$idAnswer'");
           $countAnswer->execute();
           header('location:index.php?page=sondage&sondage='.$sondage_id); 
         }else{
@@ -76,7 +76,7 @@ class SondageModel extends Database {
     $total = $this->pdo->query("SELECT SUM(nombre) as total from sondage_reponse WHERE id_question_id = '$sondage_id'"); //le total est le nombre total pour les %
     $total = $total->fetchAll(\PDO::FETCH_ASSOC);
     //requete permettant de récupéré les info d'une réponse
-    $resultat = $this->pdo->query("SELECT q.`date_fin` as date_fin, q.`question` as question, a.`choix` as choix, a.`nombre` as nombre, SUM(a.`nombre`) as total FROM sondage_question as q INNER JOIN sondage_reponse as a on q.`question_id` = a.`id_question_id` WHERE q.`question_id` = '$sondage_id' GROUP BY reponse_id ");
+    $resultat = $this->pdo->query("SELECT q.`date_fin` as date_fin, q.`question` as question, r.`choix` as choix, r.`nombre` as nombre, SUM(r.`nombre`) as total FROM sondage_question as q INNER JOIN sondage_reponse as r on q.`question_id` = r.`id_question_id` WHERE q.`question_id` = '$sondage_id' GROUP BY reponse_id ");
     $resultat = $resultat->fetchAll(\PDO::FETCH_ASSOC);
     return array($resultat, $total) ; //return un tableau de var a la vue
   }

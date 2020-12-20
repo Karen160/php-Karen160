@@ -41,7 +41,7 @@
                 <!-- Affichage des sondages -->
                 <div class="boxsondage">
                     <a href="index.php?page=sondage&sondage=<?=$sondage->question_id?>">
-                        <img src="<?= $sondage->image_question ?>" alt="Image de la question ' + <?= $sondage->question ?> + '">
+                        <img src="<?= $sondage->image_question ?>" alt="Image de la question <?= $sondage->question ?> ">
                         <p>
                             <span>
                                 Date de fin : <?= $sondage->date_fin ?>
