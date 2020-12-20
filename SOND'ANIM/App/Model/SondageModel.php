@@ -13,7 +13,7 @@ class SondageModel extends Database {
 
     //select tout les ids de sondage exitants
     //select info d'un sondage
-    $sondage=$this->query("SELECT q.`question`, q.`question_id`, q.`auteur_membre_id`, a.`choix`, a.`reponse_id` FROM `sondage_question` as q INNER JOIN sondage_reponse as a WHERE `question_id` = `id_question_id` AND `question_id` = ' $sondage_id' ");
+    $sondage=$this->query("SELECT q.`question`, q.`question_id`, q.`type`, q.`point`, q.`auteur_membre_id`, a.`choix`, a.`reponse_id` FROM `sondage_question` as q INNER JOIN sondage_reponse as a WHERE `question_id` = `id_question_id` AND `question_id` = ' $sondage_id' ");
 
     //select tout les ids de sondage exitants
     //select info d'un sondage
@@ -76,7 +76,7 @@ class SondageModel extends Database {
     $total = $this->pdo->query("SELECT SUM(nombre) as total from sondage_reponse WHERE id_question_id = '$sondage_id'"); //le total est le nombre total pour les %
     $total = $total->fetchAll(\PDO::FETCH_ASSOC);
     //requete permettant de récupéré les info d'une réponse
-    $resultat = $this->pdo->query("SELECT q.`date_fin` as date_fin, q.`question` as question, r.`choix` as choix, r.`nombre` as nombre, SUM(r.`nombre`) as total FROM sondage_question as q INNER JOIN sondage_reponse as r on q.`question_id` = r.`id_question_id` WHERE q.`question_id` = '$sondage_id' GROUP BY reponse_id ");
+    $resultat = $this->pdo->query("SELECT q.`date_fin` as date_fin, q.`question` as question, r.`choix` as choix, r.`nombre` as nombre, SUM(r.`nombre`) as total, q.`point` FROM sondage_question as q INNER JOIN sondage_reponse as r on q.`question_id` = r.`id_question_id` WHERE q.`question_id` = '$sondage_id' GROUP BY reponse_id ");
     $resultat = $resultat->fetchAll(\PDO::FETCH_ASSOC);
     return array($resultat, $total) ; //return un tableau de var a la vue
   }
@@ -84,7 +84,7 @@ class SondageModel extends Database {
   function comment() {
     $sondage_id=$_GET['sondage'];
     //function permettant de recup et afficher les commentaire et les info lié
-    $commentaire =$this->query("SELECT m.`pseudo`, c.`msg`, c.`date_msg` FROM commentaire as c INNER JOIN membre as m on c.`id_membre` = m.`membre_id` WHERE id_question_id = '$sondage_id'");
+    $commentaire =$this->query("SELECT m.`pseudo`, m.`image`, c.`msg`, c.`date_msg` FROM commentaire as c INNER JOIN membre as m on c.`id_membre` = m.`membre_id` WHERE id_question_id = '$sondage_id'");
     if(isset($_POST['sendcom'])) {
       if(!empty($_POST['commentaire'])) {
         $iduser=$_SESSION['membre']['membre_id'];

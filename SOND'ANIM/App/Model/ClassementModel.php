@@ -3,6 +3,6 @@ use Core\Database;
 
 class ClassementModel extends Database {
     function classement() {
+        
     }
-
 }

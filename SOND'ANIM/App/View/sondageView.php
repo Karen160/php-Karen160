@@ -82,31 +82,45 @@ $dateFin = $resultat[0][0]["date_fin"];
 list ($temps, $past) = TimeToFin($dateFin);
 ?>
 <main>
+    <?php 
+    if($sondage[0]->type == 1){
+        echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
+    }else if($sondage[0]->type == 2){
+        echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
+    }else if($sondage[0]->type == 3){
+        echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
+        echo '<button class="btn droite">Partager ce sondage</button>';
+        echo '<h2 class="fondDev">Sondage Demon Slayer</h2>';
+    }else if($sondage[0]->type == 4){
+        echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
+    }
+    ?>
 
-    <button class="btn btn-info active pop" style="float:right; margin-right:40px">Partager ce sondage</button><br><br>
     <?php 
     if($past == false && $_SESSION['membre']['membre_id'] != $sondage[0]->auteur_membre_id && $vote == false){
     ?>
     <!-- Affichage des choix du sondage si il n'est pas répondu -->
-    <section id="sondage"> 
-        <h2><?=$sondage[0]->question?></h2>
-        <br><br>
-        <div class="sond">
-            <?php foreach($sondage as $choix): ?>
-            <button name="addAnswer">
-                <?php $idHash = password_hash($choix->reponse_id, PASSWORD_DEFAULT); ?>
-                <a href="index.php?page=sondage&sondage=<?= $choix->question_id?>&answer=<?=$idHash?>">
-                    <h4><?=$choix->choix?></h4>
-                </a>
-            </button>
+    <section sondage>
+        <div class="form">
+            <h3><?=$sondage[0]->question?><span><?=$sondage[0]->point?> points</span></h3>
             <br><br>
-            <?php endforeach ?>
+            <div class="sond">
+                <?php foreach($sondage as $choix): ?>
+                <button class="btn sondagebtn" name="addAnswer">
+                    <?php $idHash = password_hash($choix->reponse_id, PASSWORD_DEFAULT); ?>
+                    <a href="index.php?page=sondage&sondage=<?= $choix->question_id?>&answer=<?=$idHash?>">
+                        <h5><?=$choix->choix?></h5>
+                    </a>
+                </button>
+                <br><br>
+                <?php endforeach ?>
+            </div>
         </div>
     </section>
 
     <!-- Affichage des résultats de ce sondage -->
     <?php }else{ ?>
-    <section id="sondage">
+    <section sondage>
         <?php  
         if($past){
             $statut = "Le sondage est terminé depuis ".$temps."Voici les résultats finaux";
@@ -117,25 +131,26 @@ list ($temps, $past) = TimeToFin($dateFin);
         $total = $resultat[1][0]['total'];
         ?>
 
-        <h2>Résultat:</h2>
-        <P class="text-center">Statut: <?= $statut ?></P>
-        <br><br>
-        <h3 class="text-center"><?= $resultat[0][0]["question"] ?></h3>
-        <br><br>
-        <div class="sond">
-            <?php foreach($resultat[0] as $result): ?>
-            <h4><?= $result['choix'] ?></h4>
-            <div class="reload">
-                <div class="bar">
-                    <?php $nb = round(($result['nombre']/$total) * 100, 1)?>
-                    <div class="percentage" style="width:<?= $nb?>%">
-                        <p><?=  $nb ?>%</p>
+        <h4 class="fondDev"><?= $statut ?></h4>
+
+        <div class="form">
+            <h3><?=$resultat[0][0]["question"]?><span><?=$resultat[0][0]["point"]?> points</span></h3>
+            <br><br>
+            <div class="sond result">
+                <?php foreach($resultat[0] as $result): ?>
+                <h5><?= $result['choix'] ?></h5>
+                <div class="reload">
+                    <div class="bar">
+                        <?php $nb = round(($result['nombre']/$total) * 100, 1)?>
+                        <div class="percentage" style="width:<?= $nb?>%">
+                            <p><?=$nb?>%</p>
+                        </div>
                     </div>
+                    <p><?= $result['nombre'] ?> votes</p>
+                    <br>
+                    <?php endforeach ?>
                 </div>
-                <p><?= $result['nombre'] ?> votes</p>
-                <?php endforeach; ?>
             </div>
-        </div>
     </section>
     <?php  } ?>
 
@@ -149,7 +164,7 @@ list ($temps, $past) = TimeToFin($dateFin);
             <?php foreach($commentaire as $com): ?>
             <div class="msg">
                 <div>
-                    <img src="https://www.tbstat.com/wp/uploads/2019/07/20190724_Blockchain-Gaming.jpg">
+                    <img src="<?= $com->image ?>" alt="Image du profil">
                     <p><?= $com->pseudo ?></p>
                     <p><?= $com->date_msg ?></p>
                 </div>
@@ -162,14 +177,11 @@ list ($temps, $past) = TimeToFin($dateFin);
             <br>
         </div>
 
-
-
         <!-- Ajouter un commentaire au sondage -->
-
-        <button type="submit" class="btn btn-info combutton active" style="margin:0 auto; display:block">Ajouter un
+        <button type="submit" class="btn combutton" style="margin:0 auto; display:block">Ajouter un
             commentaire</button>
         <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" class="monCom">
-            <textarea name="commentaire" id="commentaire" class="form-control"
+            <textarea name="commentaire" id="commentaire"
                 placeholder="Mon commentaire..."></textarea>
             <br>
             <button name="sendcom" id="com2" class="btn btn-info com2 active" type="submit"

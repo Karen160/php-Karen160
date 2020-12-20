@@ -8,7 +8,7 @@
             <img class="fond" src="Asset/img/logo/sondanime.png" alt="Midoryia, Luffy, Tanjiro et Killua">
             <h2 class="fondDev" >Le classement</h2>
             <h4 class="fondDev">Regardez votre place dans le classement grâce à vos points gagnés ! <br> Qui sera le meilleur parieur d'animé ?</h4>
-
+           
             <table>
                 <tr class="titre">
                     <td>Rang</td>

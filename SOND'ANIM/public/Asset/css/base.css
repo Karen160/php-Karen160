@@ -47,10 +47,15 @@ h4{
     color: rgb(232, 230, 227);
 }
 
-p, a, label, tr, h3, h4 {
+p, a, label, tr, h3, h4, h5, button {
     color: rgb(232, 230, 227);
     font-family: "Roboto";
     text-decoration: none;
+}
+
+h5{
+    font-size: 1.5em;
+    padding-bottom: 7px;
 }
 
 body{
@@ -132,6 +137,34 @@ h4.fondDev {
     top: 150px;
     z-index: 10;
     position: relative;
+}
+
+.btn{
+    background-color: #14B6DF;
+    padding: 10px;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.droite{
+    float:right; 
+    margin:10px 40px;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.sondagebtn{
+    font-size: 1em;
+    margin: auto;
+    display: block;
+    width: 80%;
+}
+
+.btn:hover, .droite:hover{
+    cursor: pointer;
 }
 
 footer{

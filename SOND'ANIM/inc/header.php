@@ -10,13 +10,13 @@
         ?>
         <nav>
             <ul>
-                <a href="../public/index.php?page=home"><li>Acceuil</li></a>
+                <a href="../public/index.php?page=home"><li>Accueil</li></a>
                 <a href="../public/index.php?page=sondageTheme"><li>Sondage</li></a>
                 <a href="../public/index.php?page=classement"><li>Classement</li></a>
-                <a href="../public/index.php?page=resultat"><li>Résultat</li></a>
 
                 <!-- Si l'internaute est connecté, on affiche ce menu  -->
                 <?php if($_SESSION['connect'] == true) { ?>
+                    <a href="../public/index.php?page=resultat"><li>Résultat</li></a>
                     <a href="../public/index.php?page=newSondage"><li>Créer un sondage</li></a>
                     <a href="../public/index.php?page=profil"><li>Profil</li></a>
                     <a href="index.php?page=home&action=deconnexion">Deconnexion</a>

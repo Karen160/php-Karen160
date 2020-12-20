@@ -30,8 +30,8 @@
 }
 
 
-[sondage] form{
-    margin: 100px auto 0px;
+[sondage] .form{
+    margin: 50px auto 0px;
     display: block;
     border-radius: 50px;
     width: 50%;
@@ -43,7 +43,7 @@
 
 
 
-[sondage] form p{
+[sondage] .form p{
     margin: 20px 20px 50px 15%;
     font-size: 1.1em;
 }
@@ -115,12 +115,20 @@
     }
 }
 
+[sondage] .form .result p{
+  margin: 0;
+}
 
-.bar {
-    /* font-size: 10px */
+[sondage] .form .result{
+  margin: auto;
+  display: block;
+  width: 30em;
+}
+
+[sondage] .bar {
     width: 30em;
     height: 1.5em;
-    border-radius: 0.5em;
+    border-radius: 0.7em;
     position: relative;
     background: #f2f2f2;
     box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
@@ -128,60 +136,20 @@
     overflow-y: hidden;
   }
 
-  #sondage .sond button{
-    width: 30em;
-  }
-
-  .bar .percentage {
+  [sondage] .bar .percentage {
     position: relative;
     font-size: 1.5em;
-    background: tomato;
+    background: #14b6df;
     height: 1em;
     border-radius: 0.5em;
     overflow-y: hidden;
   }
 
-  #sondage p{
-    padding: 5px 0px 5px 10px;
-  }
-
-  .bar .percentage p{
+  [sondage] .bar .percentage p{
     color:white;
     font-size: 0.8em;
     padding: 0px 0px 0px 10px!important;
   }
-
-  #sondage{
-    background-color: #D5E9EC;
-    padding: 100px 15px;
-    width: 800px;
-    border-radius: 15px;
-    margin: auto;
-  }
-
-  #sondage a{
-    text-decoration: none;
-    color: white;
-  }
-
-  #sondage a:hover{
-    text-decoration: none;
-    color: white;
-  }
-
-  #sondage h4{
-    margin: 10px 0;
-    padding-left: 10px;
-    /* color: black; */
-  }
-
-  #sondage .sond{
-    width: 30em;
-    margin: 0 auto;
-    display: block;
-    
-  }
-
 
   #commentaire #com .msg{
     width: 800px;
