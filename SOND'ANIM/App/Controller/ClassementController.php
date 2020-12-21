@@ -11,6 +11,8 @@ class ClassementController{
     }
     public function render()
     { 
+        $membre = $this->model->classement();
+        
         //on require la vue    
         require ROOT."/App/View/classementView.php";
     }

@@ -38,6 +38,6 @@ class ProfilModel extends Database{
 
     function mesSondage(){
         $id=$_SESSION['membre']['membre_id']; //récup id 
-        return $allSondage = $this->query("SELECT question_id, `question`, `image_question`, `point`, `date_fin` FROM `sondage_question` INNER JOIN membre WHERE date_fin >= NOW() AND membre_id = '$id' ORDER BY date_fin ASC");
+        return $allSondage = $this->query("SELECT question_id, `question`, `image_question`, `point`, `date_fin` FROM `sondage_question` WHERE date_fin >= NOW() AND auteur_membre_id = '$id' ORDER BY date_fin ASC");
     }
 }
