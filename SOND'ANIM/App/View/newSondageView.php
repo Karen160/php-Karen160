@@ -6,7 +6,7 @@
 <!-- Formulaire de création d'un nouveau sondage -->
 <section class="col-sm-7 mx-auto" id="newSondage">
         <div class="card position-static">
-            <form class="card-body" method="post">
+            <form class="card-body" method="post" style="background-color: #1B6173">
                 <h2 class="card-title">Créer un sondage</h2>
                 <div class="  col-sm-12 mt-3">
                     <label for="question">Question</label>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="  col-sm-12 mt-4 offset-ms-4">
                     <button name="boutton" id="boutonPropo" type="submit"
-                        class="btn btn-info btn-block active">Envoyez</button>
+                        class="btn btn-info btn-block">Envoyez</button>
                 </div>
             </form>
         </div>

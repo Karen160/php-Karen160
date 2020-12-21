@@ -4,8 +4,9 @@
 <?php include('../inc/header.php'); ?>
 <main id="profil">
     <button onclick="window.location.href = 'index.php?page=profilModif'" class="btn btn-info active"
-        style="float:right; margin-right:40px">Modifier mon profil</button><br><br>
-    <button onclick="window.location.href = 'index.php?page=friend'" class="btn btn-info active"
+        style="float:right; margin-right:40px">Modifier mon profil</button>
+    <br><br><br>
+        <button onclick="window.location.href = 'index.php?page=friend'" class="btn btn-info active"
         style="float:right; margin-right:70px">Mes amis</button>
 
     <!-- Information du profil -->
@@ -46,7 +47,7 @@
     </form>
 
     <!-- Affichage des sondages du membre lorsqu'il est connecté -->
-    <section id="mesSond">
+    
         <h2>Mes sondages</h2>
         <div class="conteneur">
             <?php foreach( $allSondage as $sondagePerso) : ?>
@@ -70,6 +71,6 @@
                 </div>
                 <?php endforeach; ?>
         </div>
-    </section>
+   
 </main>
 <?php include('../inc/footer.php'); ?>

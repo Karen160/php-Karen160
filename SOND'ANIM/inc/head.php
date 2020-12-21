@@ -10,6 +10,6 @@
 
     <!-- Lien pour utiliser les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-        
+    
     <script async defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script  async defer src="Asset/js/main.js"> </script>
