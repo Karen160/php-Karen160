@@ -22,12 +22,9 @@ class FriendModel extends Database {
         if($colA->rowCount()==1 || $colB->rowCount()==1) {
             $colA=$colA->fetchAll(\PDO::FETCH_ASSOC);
             $colB=$colB->fetchAll(\PDO::FETCH_ASSOC);
-        }
-
-        else {
+        }else {
             $msg="vous n'avez aucun amis";
         }
-
 
         if(isset($_GET['id'])) {
             $idFriend=$_GET['id'];
@@ -48,11 +45,7 @@ class FriendModel extends Database {
             else {
                 $msg2='vous êtes déjà amis';
             }
-
-
         }
-
         return $var=array($msg, $colA, $colB);
-
     }
 }

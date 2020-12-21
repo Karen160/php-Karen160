@@ -106,13 +106,10 @@ class SondageModel extends Database {
 
       //Vérifier si le message fait plus de 20 caractères
       if(iconv_strlen(trim($_POST['textarea'])) >=20) { //si le stextarea sans espace au début et à la fin fait au moins 20 caractère
-        
         $i=0; //on initialise i a 0
-
+        
         while(isset($_POST['email'.($i+1)])) { //tant que l'élément au name email$i existe on fait i++(retourne le nombre choisit)
-    
           $i++;
-
         }
 
         for($k=1; $k<=$i; $k++) { //tant que k est inférieur a i k++
@@ -150,7 +147,6 @@ class SondageModel extends Database {
               //erreur si champs vide
               $msg='<div class="alert"><i class="fas fa-exclamation-circle"></i>Merci de remplir tous les champs. Le message doit avoir au moin 20 caractèregi</div>';
             }
-
           }
         }
       }

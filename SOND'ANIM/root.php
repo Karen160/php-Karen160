@@ -1,12 +1,10 @@
 <?php
-
 use App\Controller\HomeController;
 use App\Controller\SondageThemeController;
 use App\Controller\SondageMHAController;
 use App\Controller\SondageOPController;
 use App\Controller\SondageDSController;
 use App\Controller\SondageHxHController;
-
 use App\Controller\ConnexionController;
 use App\Controller\InscriptionController;
 use App\Controller\ClassementController;

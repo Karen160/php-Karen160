@@ -9,8 +9,8 @@
     <!-- Barre de recherche -->
     <form method="POST" class="form-inline">
         <input name="recherche" class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search">
-
-        <button name="button" class="btn btn-outline-success my-2 my-sm-0 active" type="submit"  style="margin:0; background-color:#14B6DF">
+        <button name="button" class="btn btn-outline-success my-2 my-sm-0 active" type="submit"
+            style="margin:0; background-color:#14B6DF">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="white"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -20,7 +20,7 @@
             </svg>
         </button>
     </form>
-    
+
     <br><br>
     <h2>Les membres</h2>
     <br>
@@ -47,7 +47,7 @@
                 <!-- Hashage de l'id du membre -->
                 <?php $idFriendHash = password_hash($user->membre_id, PASSWORD_DEFAULT); ?>
                 <th>
-                    <button name="add"> 
+                    <button name="add">
                         <a href="index.php?page=NewFriend&id=<?= $idFriendHash ?> ">Ajouter</a>
                     </button>
                 </th>

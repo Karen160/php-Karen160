@@ -3,6 +3,5 @@ use Core\Database;
 
 class SondageThemeModel extends Database {
     function sondageTheme() {
-    
     }
 }

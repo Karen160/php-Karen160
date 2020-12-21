@@ -5,12 +5,12 @@
 <main>
     <a href="../public/index.php?page=NewFriend" class="btn btn-info active"
         style="float:right; margin-right:40px">Ajouter de nouveaux amis</a><br><br><br>
-    
+
     <!-- Barre de recherche -->
     <form class="form-inline" method="POST">
         <input name="recherche" class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search">
-
-        <button name="button" class="btn btn-outline-success my-2 my-sm-0 active" type="submit" style="margin:0; background-color:#14B6DF">
+        <button name="button" class="btn btn-outline-success my-2 my-sm-0 active" type="submit"
+            style="margin:0; background-color:#14B6DF">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="white"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -21,6 +21,7 @@
         </button>
     </form>
     <br><br>
+    
     <h2>Mes amis</h2>
     <br>
     <!-- Liste des membres inscrit qui sont amis avec l'utilisateur -->
@@ -61,7 +62,7 @@
                 </td>
                 <th>
                     <button name="deleteB">
-                    <a href="index.php?page=friend&id=<?= $friendB['id'] ?>">Supprimer</a>
+                        <a href="index.php?page=friend&id=<?= $friendB['id'] ?>">Supprimer</a>
                     </button>
                 </th>
             </tr>

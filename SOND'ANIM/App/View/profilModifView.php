@@ -7,16 +7,16 @@
         <!-- Formulaire de modification du profil -->
         <form method="post">
             <!-- Récupération des infos dans la bdd -->
-        <?php 
+            <?php 
             foreach($user_infos[0] as $userdata):
             foreach($user_infos[1] as $frienddata):
             foreach($user_infos[2] as $sondagedata):
             ?>
-             <label for="image">Image du profil :</label>
+            <label for="image">Image du profil :</label>
             <input type="text" name="image" class="form-control" value="<?= $userdata->image?>">
             <div class="info">
-                
-                
+
+
                 <div>
                     <label for="nom">Nom :</label>
                     <!-- Met dans la valeur des boutons les informations actuelles du profil -->
@@ -41,7 +41,7 @@
                     <input type="password" name="mdp" class="form-control" placeholder="veuillez remplir le champ"
                         required>
                 </div>
-                
+
             </div>
             <input type="submit" class="btn btn-info btn-block active" value="Envoyez" name="bouton">
             <?php 

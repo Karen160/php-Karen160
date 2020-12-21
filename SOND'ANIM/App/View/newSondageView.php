@@ -1,10 +1,11 @@
 <?php include('../inc/head.php'); ?>
 <title>Sond'Anim</title>
-<meta name="description" content="Répondez aux différents sondages concernant vos animés préférés et gagnez des points pour devenir premier au classement !">
+<meta name="description"
+    content="Répondez aux différents sondages concernant vos animés préférés et gagnez des points pour devenir premier au classement !">
 <?php include('../inc/header.php'); ?>
 <main>
-<!-- Formulaire de création d'un nouveau sondage -->
-<section class="col-sm-7 mx-auto" id="newSondage">
+    <!-- Formulaire de création d'un nouveau sondage -->
+    <section class="col-sm-7 mx-auto" id="newSondage">
         <div class="card position-static">
             <form class="card-body" method="post" style="background-color: #1B6173">
                 <h2 class="card-title">Créer un sondage</h2>

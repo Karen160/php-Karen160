@@ -9,18 +9,19 @@
         <div class="conteneur">
             <?php foreach( $requete[0] as $sondageResult) : ?>
             <div class="boxsondage">
-            <a href="index.php?page=sondage&sondage=<?=$sondageResult->question_id?>">
-                        <img src="<?= $sondageResult->image_question ?>" alt="Image de la question <?= $sondageResult->question ?>">
-                        <p>
-                            <span>
-                                Points : <?= $sondageResult->point?> pts
-                            </span>
-                            <br><br>
-                            <?= $sondageResult->question ?>
-                            <br>
-                            <i class="fas fa-arrow-right"></i>
-                        </p>
-                    </a>
+                <a href="index.php?page=sondage&sondage=<?=$sondageResult->question_id?>">
+                    <img src="<?= $sondageResult->image_question ?>"
+                        alt="Image de la question <?= $sondageResult->question ?>">
+                    <p>
+                        <span>
+                            Points : <?= $sondageResult->point?> pts
+                        </span>
+                        <br><br>
+                        <?= $sondageResult->question ?>
+                        <br>
+                        <i class="fas fa-arrow-right"></i>
+                    </p>
+                </a>
                 <br>
             </div>
             <?php endforeach;?>
@@ -33,18 +34,19 @@
         <div class="conteneur">
             <?php foreach( $requete[1] as $sondageResultPerso) : ?>
             <div class="boxsondage">
-            <a href="index.php?page=sondage&sondage=<?=$sondageResultPerso->question_id?>">
-                        <img src="<?= $sondageResultPerso->image_question ?>" alt="Image de la question <?= $sondageResultPerso->question ?>">
-                        <p>
-                            <span>
-                                Points : <?= $sondageResultPerso->point?> pts
-                            </span>
-                            <br><br>
-                            <?= $sondageResultPerso->question ?>
-                            <br>
-                            <i class="fas fa-arrow-right"></i>
-                        </p>
-                    </a>
+                <a href="index.php?page=sondage&sondage=<?=$sondageResultPerso->question_id?>">
+                    <img src="<?= $sondageResultPerso->image_question ?>"
+                        alt="Image de la question <?= $sondageResultPerso->question ?>">
+                    <p>
+                        <span>
+                            Points : <?= $sondageResultPerso->point?> pts
+                        </span>
+                        <br><br>
+                        <?= $sondageResultPerso->question ?>
+                        <br>
+                        <i class="fas fa-arrow-right"></i>
+                    </p>
+                </a>
                 <br>
             </div>
             <?php endforeach;?>

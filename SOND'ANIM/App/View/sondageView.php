@@ -101,14 +101,13 @@ list ($temps, $past) = TimeToFin($dateFin);
         echo '<button class="btn btn-info pop droite">Partager ce sondage</button>'; 
         echo '<h2 class="fondDev">Sondage Hunter x Hunter</h2>';
     }
-    ?>
-
-    <?php 
+    
     if($past == false && $_SESSION['membre']['membre_id'] != $sondage[0]->auteur_membre_id && $vote == false){
     ?>
+
     <!-- Affichage des choix du sondage si il n'est pas répondu -->
     <section sondage>
-    
+
         <div class="form">
             <h3><?=$sondage[0]->question?><span><?=$sondage[0]->point?> points</span></h3>
             <br><br>
@@ -186,8 +185,8 @@ list ($temps, $past) = TimeToFin($dateFin);
         <button type="submit" class="btn combutton" style="margin:0 auto; display:block">Ajouter un
             commentaire</button>
         <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" class="monCom">
-            <textarea name="commentaire" id="commentaire"
-                placeholder="Mon commentaire..." style="margin:0 auto; display:block"></textarea>
+            <textarea name="commentaire" id="commentaire" placeholder="Mon commentaire..."
+                style="margin:0 auto; display:block"></textarea>
             <br>
             <button name="sendcom" id="com2" class="btn btn-info com2 active" type="submit"
                 style="margin:0 auto; display:block">Envoyez</button>
