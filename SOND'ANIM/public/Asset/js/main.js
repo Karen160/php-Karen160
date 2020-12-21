@@ -49,6 +49,6 @@ setInterval('load_commentaire()', 500);
 function load_commentaire() {
     $('#com').load('#com .msg'); //Mise à jour des commentaires
     $('#sondage .sond .reload').load('#sondage .sond .reload'); //Mise à jour des résultats des sondages
-    // $('#friend tbody').load('#friend tbody tr'); //Mise à jour des status en ligne/hors ligne pour page ami
-    // $('#newFriend tbody').load('#newFriend tbody tr'); //Mise à jour des status en ligne/hors ligne pour page nouveau ami
+    $('#friend tbody').load('#friend tbody tr'); //Mise à jour des status en ligne/hors ligne pour page ami
+    $('#newFriend tbody').load('#newFriend tbody tr'); //Mise à jour des status en ligne/hors ligne pour page nouveau ami
 };

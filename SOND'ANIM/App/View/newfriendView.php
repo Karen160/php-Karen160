@@ -4,13 +4,13 @@
 <?php include('../inc/header.php'); ?>
 <main>
     <a href="../public/index.php?page=friend" class="btn btn-info active" style="float:right; margin-right:40px">Voir
-        mes amis</a><br><br>
+        mes amis</a><br><br><br>
 
     <!-- Barre de recherche -->
     <form method="POST" class="form-inline">
         <input name="recherche" class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search">
 
-        <button name="button" class="btn btn-outline-success my-2 my-sm-0 active" type="submit">
+        <button name="button" class="btn btn-outline-success my-2 my-sm-0 active" type="submit"  style="margin:0; background-color:#14B6DF">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="white"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"

@@ -45,7 +45,7 @@
         <button type="submit" class="btn btn-info active" name="delete" style="float:right; margin-right:20px">Supprimer
             Mon Compte</button>
     </form>
-
+    <br><br><br>
     <!-- Affichage des sondages du membre lorsqu'il est connecté -->
     
         <h2>Mes sondages</h2>

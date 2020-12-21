@@ -17,12 +17,15 @@
     text-align: center;
 }
 
-[classement] td{
-    padding: 15px;
-    text-align: center;
+[classement] tr td{
     color: black;
 }
 
+[classement] td{
+    padding: 15px;
+    text-align: center;
+    background-color: white;
+}
 
 [classement] .titre{
     font-size: 1.6em;

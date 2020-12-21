@@ -82,17 +82,24 @@ $dateFin = $resultat[0][0]["date_fin"];
 list ($temps, $past) = TimeToFin($dateFin);
 ?>
 <main>
+    <!-- Fond changeant en fonction du type de sondage -->
     <?php 
     if($sondage[0]->type == 1){
-        echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
+        echo '<img class="fond" src="Asset/img/MHA/todoroki.gif" alt="Feu et glace de todoroki">';
+        echo '<button class="btn btn-info pop droite">Partager ce sondage</button>';
+        echo '<h2 class="fondDev">Sondage My Hero Academia</h2>';
     }else if($sondage[0]->type == 2){
-        echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
+        echo '<img class="fond" src="Asset/img/onePiece/luffy.gif" alt="Luffy évite les balles">';
+        echo '<button class="btn btn-info pop droite">Partager ce sondage</button>';
+        echo '<h2 class="fondDev">Sondage One Piece</h2>';
     }else if($sondage[0]->type == 3){
         echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
-        echo '<button class="btn droite">Partager ce sondage</button>';
+        echo '<button class="btn btn-info pop droite">Partager ce sondage</button>';
         echo '<h2 class="fondDev">Sondage Demon Slayer</h2>';
     }else if($sondage[0]->type == 4){
-        echo '<img class="fond" src="Asset/img/demonSlayer/clan.gif" alt="Les pourfendeurs de démon en train de courir">';
+        echo '<img class="fond" src="Asset/img/HxH/gonkirua.gif" alt="Gon et kirua">';
+        echo '<button class="btn btn-info pop droite">Partager ce sondage</button>'; 
+        echo '<h2 class="fondDev">Sondage Hunter x Hunter</h2>';
     }
     ?>
 
@@ -101,6 +108,7 @@ list ($temps, $past) = TimeToFin($dateFin);
     ?>
     <!-- Affichage des choix du sondage si il n'est pas répondu -->
     <section sondage>
+    
         <div class="form">
             <h3><?=$sondage[0]->question?><span><?=$sondage[0]->point?> points</span></h3>
             <br><br>
@@ -132,7 +140,6 @@ list ($temps, $past) = TimeToFin($dateFin);
         ?>
 
         <h4 class="fondDev"><?= $statut ?></h4>
-
         <div class="form">
             <h3><?=$resultat[0][0]["question"]?><span><?=$resultat[0][0]["point"]?> points</span></h3>
             <br><br>
@@ -153,7 +160,6 @@ list ($temps, $past) = TimeToFin($dateFin);
             </div>
     </section>
     <?php  } ?>
-
     <br><br><br>
 
     <!-- Les commentaires du sondage -->
@@ -164,7 +170,6 @@ list ($temps, $past) = TimeToFin($dateFin);
             <?php foreach($commentaire as $com): ?>
             <div class="msg">
                 <div>
-                    <img src="<?= $com->image ?>" alt="Image du profil">
                     <p><?= $com->pseudo ?></p>
                     <p><?= $com->date_msg ?></p>
                 </div>
@@ -182,7 +187,7 @@ list ($temps, $past) = TimeToFin($dateFin);
             commentaire</button>
         <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" class="monCom">
             <textarea name="commentaire" id="commentaire"
-                placeholder="Mon commentaire..."></textarea>
+                placeholder="Mon commentaire..." style="margin:0 auto; display:block"></textarea>
             <br>
             <button name="sendcom" id="com2" class="btn btn-info com2 active" type="submit"
                 style="margin:0 auto; display:block">Envoyez</button>

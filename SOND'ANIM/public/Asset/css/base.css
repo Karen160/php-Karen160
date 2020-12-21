@@ -54,6 +54,10 @@ p, a, label, tr, h3, h4, h5, button {
     text-decoration: none;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 h5{
     font-size: 1.5em;
     padding-bottom: 7px;
@@ -106,13 +110,13 @@ img.fond{
 }
 
 h2.fondDev {
-    z-index: 10;
+    z-index: 5;
     position: relative;
     padding: 100px 0 52px;
 }
 
 h4.fondDev {
-    z-index: 10;
+    z-index: 5;
     position: relative;
 }
 
@@ -172,6 +176,7 @@ h4.fondDev {
 }
 
 footer{
+    margin-top: 100px;
     background-color: rgba(16, 146, 178, 0.521);
     text-align: center;
     padding: 15px;
